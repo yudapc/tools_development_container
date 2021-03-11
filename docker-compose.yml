@@ -21,7 +21,7 @@ services:
     image: redis:6.2.1-alpine
     restart: always
     volumes:
-      - ./data:/data
+      - ./redis_data:/data
     ports:
       - 6379:6379
 
@@ -29,6 +29,11 @@ services:
     container_name: sonarqube
     image: sonarqube:7.9.3-community
     restart: always
+    volumes:
+      - ./sonarqube_data/sonarqube_data:/opt/sonarqube/data
+      - ./sonarqube_data/sonarqube_extensions:/opt/sonarqube/extensions
+      - ./sonarqube_data/sonarqube_logs:/opt/sonarqube/logs
+      - ./sonarqube_data/sonarqube_temp:/opt/sonarqube/temp
     ports:
       - 9000:9000
       - 9092:9092
