@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: 12345678
       PGDATA: /data/postgres
     volumes:
-      - ./postgres_data:/data/postgresa
+      - ./postgres_data:/data/postgres
     ports:
       - 5432:5432
 
