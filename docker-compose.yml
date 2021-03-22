@@ -7,53 +7,21 @@ networks:
 
 services:
   postgres:
-    hostname: postgres
-    container_name: postgres
-    image: postgres:13.2-alpine
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345678
-      PGDATA: /data/postgres
-    volumes:
-      - ./postgres_data:/data/postgres
-    ports:
-      - 5432:5432
+    extends:
+      file: postgres.yml
+      service: postgres
 
   redis:
-    hostname: redis
-    container_name: redis
-    image: redis:6.2.1-alpine
-    restart: always
-    volumes:
-      - ./redis_data:/data
-    ports:
-      - 6379:6379
+    extends:
+      file: redis.yml
+      service: redis
 
   sonarqube:
-    container_name: sonarqube
-    image: sonarqube:7.9.3-community
-    restart: always
-    volumes:
-      - ./sonarqube_data/sonarqube_data:/opt/sonarqube/data
-      - ./sonarqube_data/sonarqube_extensions:/opt/sonarqube/extensions
-      - ./sonarqube_data/sonarqube_logs:/opt/sonarqube/logs
-      - ./sonarqube_data/sonarqube_temp:/opt/sonarqube/temp
-    ports:
-      - 9000:9000
-      - 9092:9092
+    extends:
+      file: sonarqube.yml
+      service: sonarqube
 
   mysql:
-    hostname: mysql
-    container_name: mysql
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_USER: devuser
-      MYSQL_PASSWORD: devuser
-      MYSQL_DATABASE: devuser
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - ./mysql_data:/var/lib/mysql
-    ports:
-      - 3306:3306
+    extends:
+      file: mysql.yml
+      service: mysql

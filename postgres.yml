@@ -1,0 +1,16 @@
+version: "3.1"
+
+services:
+  postgres:
+    hostname: postgres
+    container_name: postgres
+    image: postgres:13.2-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres_data:/data/postgres
+    ports:
+      - 5432:5432
