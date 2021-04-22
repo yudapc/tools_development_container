@@ -16,11 +16,6 @@ services:
       file: redis.yml
       service: redis
 
-  sonarqube:
-    extends:
-      file: sonarqube.yml
-      service: sonarqube
-
   mysql:
     extends:
       file: mysql.yml
