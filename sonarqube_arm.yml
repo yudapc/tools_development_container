@@ -1,0 +1,9 @@
+version: "3.1"
+
+services:
+  sonarqube:
+    container_name: sonarqube_arm
+    image: hub4rpi64/sonarqube:8.3.1.34397
+    restart: always
+    ports:
+      - 9000:9000
