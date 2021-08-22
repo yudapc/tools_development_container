@@ -7,4 +7,5 @@ docker run -d \
 -e PGDATA=/var/lib/postgresql/data/pgdata \
 -v /postgres_data:/var/lib/postgresql/data \
 --restart unless-stopped \
+--network development \
 postgres:13.4
