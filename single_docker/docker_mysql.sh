@@ -7,7 +7,7 @@ docker run -d \
 -e MYSQL_USER=dev \
 -e MYSQL_PASSWORD=dev1122x \
 -e MYSQL_DATABASE=be_development \
--v /mysql_data:/etc/mysql/conf.d \
+-v /mysql_data:/var/lib/mysql \
 --restart unless-stopped \
 --network development \
 mysql:8.0.26
