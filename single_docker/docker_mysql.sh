@@ -10,4 +10,5 @@ docker run -d \
 -v /mysql_data:/var/lib/mysql \
 --restart unless-stopped \
 --network development \
+-m 256m --memory-reservation=128m \
 mysql:8.0.26

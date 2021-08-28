@@ -8,4 +8,5 @@ docker run -d \
 -v /postgres_data:/var/lib/postgresql/data \
 --restart unless-stopped \
 --network development \
-postgres:13.4
+-m 512m --memory-reservation=128m \
+postgres:12.8
