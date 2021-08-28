@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress:5.8-php7.4
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: userdev
+      WORDPRESS_DB_PASSWORD: secret
+      WORDPRESS_DB_NAME: my_db
+    volumes:
+      - ./wordpress:/var/www/html
+
+  db:
+    image: mysql:5.7
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: userdev
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
