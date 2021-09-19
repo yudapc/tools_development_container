@@ -4,11 +4,14 @@ services:
   postgres:
     hostname: postgres
     container_name: postgres
-    image: postgres:13.2-alpine
+    image: postgres:13.3-alpine
+    mem_limit: 256m
+    mem_reservation: 128M
+    cpus: 0.2
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345678
+      POSTGRES_PASSWORD: dev1122x
       PGDATA: /data/postgres
     volumes:
       - ./postgres_data:/data/postgres
