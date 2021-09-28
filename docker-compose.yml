@@ -16,7 +16,3 @@ services:
       file: redis.yml
       service: redis
 
-  mysql:
-    extends:
-      file: mysql.yml
-      service: mysql
