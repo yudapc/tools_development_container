@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  php:
+    image: php:7.4.26-apache
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+    volumes:
+      - ./php:/var/www/html/
+    ports:
+      - 3080:80
+
+  db:
+    image: mysql
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+    restart: always
+    environment:
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: userdev
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+    ports:
+      - 3081:80
+    restart: always
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
